@@ -1,0 +1,29 @@
+{
+  "name": "Add Zoom by default",
+  "version": "1.1",
+  "description": "Autoclick 'Make it a Zoom Meeting' button when creating a new google calendar invite.",
+  "manifest_version": 2,
+  "permissions": [
+    "webNavigation",
+    "https://calendar.google.com/*",
+    "activeTab",
+    "tabs"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_idle",
+      "matches": [
+        "https://calendar.google.com/*"
+      ],
+      "js": [
+        "contentScript.js"
+      ]
+    }
+  ]
+}

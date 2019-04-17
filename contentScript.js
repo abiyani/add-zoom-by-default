@@ -1,8 +1,8 @@
 function setCalendarDefaults(call_count = 0) {
-  // Note that we anchor the regexp at end to make sure there is nothing after '/eventedit'
+  // Note that we anchor the regexp at end to make sure there is no '/' after '/eventedit'
   // in URL. This is to avoid clicking on the button when editing an existing event.
   // TODO: We can make this an optional feature - show user a prompt maybe when editing ?
-  if (/calendar.google.com.*\/eventedit$/i.test(window.location.toString())) {
+  if (/calendar.google.com.*\/eventedit[^/]*$/i.test(window.location.toString())) {
     var zoom_button = document.getElementById("zoom_schedule_button");
     // DOM loading might be delayed, so retry 5 times with some backoff.
     if (call_count < 5 && zoom_button == null) {
